@@ -154,7 +154,7 @@ type PathInfoOption struct {
 	*EndToEndOption
 }
 
-// NewPacketAuthOption creates a new EndToEndOption of
+// NewPathInfoOption creates a new EndToEndOption of
 // OptTypePathInfo, initialized with the given SPIO data.
 func NewPathInfoOption(
 	p PathInfoOptionParams,
@@ -275,8 +275,8 @@ func (o PathInfoOption) AS2() uint64 {
 }
 
 // Algorithm returns the algorithm type stored in the data buffer.
-func (o PathInfoOption) Algorithm() PacketAuthAlg {
-	return PacketAuthAlg(o.OptData[24])
+func (o PathInfoOption) Algorithm() PathInfoAlg {
+	return PathInfoAlg(o.OptData[24])
 }
 
 // Timestamp returns the value set in the homonym field in the extension.
