@@ -25,7 +25,7 @@ import (
 )
 
 var (
-	spio_algo       = slayers.PathInfoCMAC
+	spio_algo       = slayers.PathInfoSHA1_AES_CBC
 	spio_ts         = uint64(0x060504030201)
 	spio_optAuthMAC = []byte("16byte_mac_foooo")
 )
@@ -39,7 +39,7 @@ var spio_rawE2EOptAuth = append(
 	    0x6, 0x0, 0x0, 0x0, 0x0, 0x1, // AS1
 		0x6, 0x5, // ISD2
 		0x6, 0x0, 0x0, 0x0, 0x0, 0x0, // AS2
-		0x0, 0x0, // Algorithm | RSV
+		0x1, 0x0, // Algorithm | RSV
 		0x6, 0x5, 0x4, 0x3, 0x2, 0x1, // Timestamp / Sequence Number
 	},
 	optAuthMAC...,
@@ -140,7 +140,7 @@ func TestMakePathInfoSPIDrkey(t *testing.T) {
 	assert.EqualValues(t, binary.BigEndian.Uint32([]byte{0, 1, 0, 1}), spi)
 }
 
-func TestPathInfoOptAuthenticatorDeserializeCorrupt(t *testing.T) {
+func TestPathInfoOptDeserializeCorrupt(t *testing.T) {
 	optAuthCorrupt := slayers.EndToEndOption{
 		OptType: slayers.OptTypePathInfo,
 		OptData: []byte{},

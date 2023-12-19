@@ -200,7 +200,7 @@ func (o PathInfoOption) Reset(
 		return serrors.New("AS_2 value should be smaller than 2^48")
 	}
 
-	o.OptType = OptTypeAuthenticator
+	o.OptType = OptTypePathInfo
 
 	n := PathInfoOptionMetadataLen + len(p.Auth)
 	if n <= cap(o.OptData) {
