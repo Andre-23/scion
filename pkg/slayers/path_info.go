@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// This file includes the SPAO header implementation as specified
-// in https://docs.scion.org/en/latest/protocols/authenticator-option.html
+// This file includes the SPIO header implementation as specified
+// TODO: add link to documentaion of SPIO header !!!
 
 // The Path Information option format is as follows:
 // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
