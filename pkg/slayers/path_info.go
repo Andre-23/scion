@@ -65,7 +65,7 @@ const (
 const (
 	// PathInfoOptionMetadataLen is the size of the SPIO Metadata and
 	// corresponds the minimum size of the SPIO OptData.
-	// The SPiO header contains the following fixed-length fields:
+	// The SPIO header contains the following fixed-length fields:
 	// SPI (4 Bytes), PMI (3 Bits), RSV (5 Bits), PTI (1 Byte),
 	// HBH Options (1 Byte), E2E Options (1 Byte),
 	// ISD1 (2 Bytes), AS1 (6 Bytes), ISD2 (2 Bytes), AS2 (6 Bytes)
@@ -202,7 +202,7 @@ func (o PathInfoOption) Reset(
 
 	o.OptType = OptTypeAuthenticator
 
-	n := PacketAuthOptionMetadataLen + len(p.Auth)
+	n := PathInfoOptionMetadataLen + len(p.Auth)
 	if n <= cap(o.OptData) {
 		o.OptData = o.OptData[:n]
 	} else {
@@ -265,7 +265,7 @@ func (o PathInfoOption) AS1() uint64 {
 }
 
 // ISD2 returns the value set in the ISD_2 field in the extension.
-func (o PathInfoOption) ISD_2() uint16 {
+func (o PathInfoOption) ISD2() uint16 {
 	return binary.BigEndian.Uint16(o.OptData[16:18])
 }
 
